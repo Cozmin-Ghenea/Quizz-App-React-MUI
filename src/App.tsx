@@ -9,6 +9,7 @@ import {
   AppBar,
   Box,
   Button,
+  colors,
   Container,
   LinearProgress,
   Toolbar,
@@ -16,15 +17,17 @@ import {
 } from "@mui/material";
 
 function App() {
-  const total = questions.length;
+  const [language, setLanguage] = useState<"ro" | "en">("ro");
 
+  const questionsList = questions[language];
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [answers, setAnswers] = useState<UserAnswer[]>([]);
   const [finished, setFinished] = useState(false);
-
-  const current = questions[index];
+  const total = questionsList.length;
+  const current = questionsList[index];
   const progress = Math.round((index / total) * 100);
+
   const handleNext = () => {
     if (!selected) return;
 
@@ -54,7 +57,15 @@ function App() {
     <>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6">Quiz App * Mui</Typography>
+          <Typography variant="h6" sx={{ textAlign: "center" }}>
+            Quiz App 🌍
+          </Typography>
+          <Box>
+            <Button color="primary" onClick={() => setLanguage("ro")}>
+              🇷🇴
+            </Button>
+            <Button onClick={() => setLanguage("en")}>🇬🇧</Button>
+          </Box>
         </Toolbar>
       </AppBar>
       <Container sx={{ py: 4 }}>
@@ -82,7 +93,7 @@ function App() {
           </>
         ) : (
           <Summary
-            questions={questions}
+            questions={questionsList}
             answers={answers}
             onRestart={handleRestart}
           />

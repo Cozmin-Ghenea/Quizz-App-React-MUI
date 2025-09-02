@@ -10,3 +10,4 @@ export type UserAnswer = {
   selectedAnswer: string;
   isCorrect: boolean;
 };
+export type Language = "ro" | "en";

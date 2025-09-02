@@ -24,7 +24,7 @@ function Summary({ questions, answers, onRestart }: SummaryProps) {
   return (
     <Box>
       <Typography variant="h4" sx={{ mb: 3, textAlign: "center" }}>
-        Rezumant Quiz
+        Rezumat Quiz
       </Typography>
 
       <Typography variant="h6" sx={{ mb: 4, textAlign: "center" }}>
