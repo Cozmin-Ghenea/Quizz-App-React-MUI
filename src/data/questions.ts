@@ -1,6 +1,6 @@
 import type { Language } from "../types";
 
-export const questions: Language[] = {
+export const questions = {
   ro: [
     {
       id: 1,
